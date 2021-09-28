@@ -46,6 +46,24 @@ def BFS(v, vertexDir):
         print(str(u.id) + '->', end='')
 
 
+def DFS_(v, vertexDir):
+    discovered = {}
+    stack = []
+    discovered[v.id] = 1
+    print(str(v.id) + '->', end='')
+    stack.append(v)
+    while len(stack) > 0:
+        u = stack.pop()
+        for s in u.edge:
+            if discovered.get(s, 0)==0:
+                discovered[s]=1
+                stack.append(u)
+                stack.append(vertexDir[s])
+                print(str(vertexDir[s].id) + '->', end='')
+                continue
+
+
+
 def DFS(v, vertexDir, discovered={}):
     discovered[v.id] = 1
     print(str(v.id) + '->', end='')
@@ -61,6 +79,8 @@ def GraphSearch():
     BFS(vertexDir[0], vertexDir)
     print()
     DFS(vertexDir[0], vertexDir)
+    print()
+    DFS_(vertexDir[0], vertexDir)
 
 
 GraphSearch()
