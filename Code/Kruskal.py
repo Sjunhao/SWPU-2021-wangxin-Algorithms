@@ -20,7 +20,7 @@ def kruskal():
     T = []
     edgeList = [Edge(i + j, i, j, G[i][j]) for i in range(0, len(G)) for j in range(i + 1, len(G[i])) if G[i][j] != 0]
     edgeList = sorted(edgeList, key=lambda edge: edge.weight)
-    tempSet = [[i] for i in range(len(G))]
+    tempSet = [set([i]) for i in range(len(G))]
     for edge in edgeList:
         vAloc = 0
         vBloc = 0
@@ -33,7 +33,7 @@ def kruskal():
             continue
         else:
             T.append(edge)
-            tempSet[vAloc].extend(tempSet[vBloc])
+            tempSet[vAloc] = tempSet[vAloc].union(tempSet[vBloc])
             del tempSet[vBloc]
 
     for edge in T:
