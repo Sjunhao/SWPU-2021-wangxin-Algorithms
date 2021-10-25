@@ -22,7 +22,7 @@ class Vertex:
         self.neighbor[nVertex] = value
 
     def __repr__(self):
-        print(self.id,id(self.neighbor),end=':')
+        print(self.id,end=':')
         for i,v in self.neighbor.items():
             print(i.id,v,end=',')
         return ''
@@ -79,8 +79,6 @@ def Dijkstra():
             if alt < dist[v]:
                 dist[v] = alt
                 prev[v] = u
-    # print(dist)
-    # print(prev)
     for v,lenth in dist.items():
         print(v.id,lenth)
 
